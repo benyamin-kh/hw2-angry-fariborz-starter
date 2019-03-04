@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import ir.ac.kntu.AngryFariborz;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -81,6 +82,20 @@ public class CheckOutputTest {
             return outputs.equals(expectedOutput);
         }
     }
+    @Test(timeout = TIME_LIMIT)
+    public void testCase0() {
+        boolean constantReturn = false;
+        constantReturn = constantReturn || doSimulation("4", "YES",true);
+        constantReturn = constantReturn || doSimulation("6", "YES",true);
+        constantReturn = constantReturn || doSimulation("8", "YES",true);
+        constantReturn = constantReturn || doSimulation("9", "YES",true);
+        constantReturn = constantReturn || doSimulation("10", "YES",true);
+        if(constantReturn) {
+            System.err.println("$$$GRADER$$$ | { type:\"MSG\" , key:\"FATAL_FAIL\" , value:\"CONTACT YOUR TA!\" , priority:1 }| $$$GRADER$$$");
+        }
+        assertFalse(constantReturn);
+
+    }
 
 
     @Test(timeout = TIME_LIMIT)
@@ -110,11 +125,14 @@ public class CheckOutputTest {
         eq1 = eq1 || doSimulation("94", "((4)+(9))$13" ,true);
         eq1 = eq1 || doSimulation("94", "9+4$13" ,true);
         eq1 = eq1 || doSimulation("94", "4+9$13" ,true);
+        eq1 = eq1 || doSimulation("94", "(9)+(4)$13" ,true);
+        eq1 = eq1 || doSimulation("94", "(4)+(9)$13" ,true);
 
 
         eq2 = eq2 || doSimulation("94", "(9-4)$5" ,true);
         eq2 = eq2 || doSimulation("94", "((9)-(4))$5" ,true);
         eq2 = eq2 || doSimulation("94", "9-4$5" ,true);
+        eq2 = eq2 || doSimulation("94", "(9)-(4)$5" ,true);
 
 
 
@@ -133,8 +151,34 @@ public class CheckOutputTest {
     @Test(timeout = TIME_LIMIT)
     public void testCase5() {
         assertTrue(doSimulation("9156747","YES",true));
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:30 , reason:\"The Number is Magical.\" } | $$$GRADER$$$");
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:10 , reason:\"The Number is Magical.\" } | $$$GRADER$$$");
 
+    }
+
+
+    @Test(timeout = TIME_LIMIT)
+    public void testCase6() {
+        assertTrue(doSimulation("20","YES",true));
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:10 , reason:\"The Number is Magical.\" } | $$$GRADER$$$");
+
+        boolean eq1 = false;
+        boolean eq2 = false;
+
+        eq1 = eq1 ||doSimulation("20", "(2+0)$2" ,true);
+        eq1 = eq1 ||doSimulation("20", "((2)+(0))$2" ,true);
+        eq1 = eq1 ||doSimulation("20", "2+0$2" ,true);
+        eq1 = eq1 ||doSimulation("20", "(2)+(0)$2" ,true);
+
+        eq2 = eq2 ||doSimulation("20", "(2-0)$2" ,true);
+        eq2 = eq2 ||doSimulation("20", "2-0$2" ,true);
+        eq2 = eq2 ||doSimulation("20", "(2)-(0)$2" ,true);
+        eq2 = eq2 ||doSimulation("20", "((2)-(0))$2" ,true);
+
+
+        assertTrue(eq1);
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:30 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
+        assertTrue(eq2);
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:30 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
     }
 
 
