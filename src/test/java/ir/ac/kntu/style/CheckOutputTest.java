@@ -113,20 +113,17 @@ public class CheckOutputTest {
     @Test(timeout = TIME_LIMIT)
     public void testCase3() {
         assertTrue(doSimulation("94","YES",true));
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:20 , reason:\"The Number is Magical.\" } | $$$GRADER$$$");
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:5 , reason:\"The Number is Magical.\" } | $$$GRADER$$$");
 
 
         boolean eq1 = false;
         boolean eq2 = false;
+        boolean eq3 = false;
 
         eq1 = eq1 || doSimulation("94", "(9+4)$13" ,true);
-        eq1 = eq1 || doSimulation("94", "(4+9)$13" ,true);
         eq1 = eq1 || doSimulation("94", "((9)+(4))$13" ,true);
-        eq1 = eq1 || doSimulation("94", "((4)+(9))$13" ,true);
         eq1 = eq1 || doSimulation("94", "9+4$13" ,true);
-        eq1 = eq1 || doSimulation("94", "4+9$13" ,true);
         eq1 = eq1 || doSimulation("94", "(9)+(4)$13" ,true);
-        eq1 = eq1 || doSimulation("94", "(4)+(9)$13" ,true);
 
 
         eq2 = eq2 || doSimulation("94", "(9-4)$5" ,true);
@@ -134,12 +131,19 @@ public class CheckOutputTest {
         eq2 = eq2 || doSimulation("94", "9-4$5" ,true);
         eq2 = eq2 || doSimulation("94", "(9)-(4)$5" ,true);
 
+        eq3 = eq3 || doSimulation("94", "(9/4)$2" ,true);
+        eq3 = eq3 || doSimulation("94", "((9)/(4))$2" ,true);
+        eq3 = eq3 || doSimulation("94", "9/4$2" ,true);
+        eq3 = eq3 || doSimulation("94", "(9)/(4)$2" ,true);
+
 
 
         assertTrue(eq1);
         System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
         assertTrue(eq2);
         System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
+        assertTrue(eq3);
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Third Equation is TRUE.\" } | $$$GRADER$$$");
     }
 
     @Test(timeout = TIME_LIMIT)
