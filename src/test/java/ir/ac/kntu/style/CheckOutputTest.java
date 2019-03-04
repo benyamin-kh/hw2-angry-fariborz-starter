@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * 110 points
+ * 120 points
  *
  * @author mhrimaz
  */
@@ -22,7 +22,7 @@ public class CheckOutputTest {
     private final static int TIME_LIMIT = 1_000_000;
 
     static {
-        System.err.println("$$$GRADER$$$ | { type:\"MSG\" , key:\"TOTAL\" , value:150, priority:1  }  | $$$GRADER$$$");
+        System.err.println("$$$GRADER$$$ | { type:\"MSG\" , key:\"TOTAL\" , value:200, priority:1  }  | $$$GRADER$$$");
     }
 
 
@@ -113,7 +113,7 @@ public class CheckOutputTest {
     @Test(timeout = TIME_LIMIT)
     public void testCase3() {
         assertTrue(doSimulation("94","YES",true));
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:10 , reason:\"The Number is Magical.\" } | $$$GRADER$$$");
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:20 , reason:\"The Number is Magical.\" } | $$$GRADER$$$");
 
 
         boolean eq1 = false;
@@ -137,9 +137,9 @@ public class CheckOutputTest {
 
 
         assertTrue(eq1);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:30 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
         assertTrue(eq2);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:30 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
     }
 
     @Test(timeout = TIME_LIMIT)
@@ -176,9 +176,9 @@ public class CheckOutputTest {
 
 
         assertTrue(eq1);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:30 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
         assertTrue(eq2);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:30 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
+        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
     }
 
 
