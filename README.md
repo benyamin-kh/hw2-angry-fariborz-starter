@@ -1,4 +1,4 @@
-# HW 2 - Angry Fariborz - 150 Points
+# HW 2 - Angry Fariborz - 200 Points
 
 [![Grader Status](YOUR_GRADER_BADGE)](YOUR_GRADER_BADGE)
 
