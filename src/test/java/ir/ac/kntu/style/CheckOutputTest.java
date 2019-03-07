@@ -136,14 +136,22 @@ public class CheckOutputTest {
         eq3 = eq3 || doSimulation("94", "9/4$2" ,true);
         eq3 = eq3 || doSimulation("94", "(9)/(4)$2" ,true);
 
+        if(eq1){
+            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
+        }
 
+        if(eq2){
+            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
+        }
+        if(eq3){
+            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Third Equation is TRUE.\" } | $$$GRADER$$$");
+        }
+        assertTrue("Missing First Equation.",eq1);
 
-        assertTrue(eq1);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
-        assertTrue(eq2);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
-        assertTrue(eq3);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Third Equation is TRUE.\" } | $$$GRADER$$$");
+        assertTrue("Missing Second Equation.",eq2);
+
+        assertTrue("Missing Third Equation.",eq3);
+
     }
 
     @Test(timeout = TIME_LIMIT)
@@ -178,11 +186,14 @@ public class CheckOutputTest {
         eq2 = eq2 ||doSimulation("20", "(2)-(0)$2" ,true);
         eq2 = eq2 ||doSimulation("20", "((2)-(0))$2" ,true);
 
-
-        assertTrue(eq1);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
-        assertTrue(eq2);
-        System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
+        if(eq1){
+            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
+        }
+        if(eq2){
+            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
+        }
+        assertTrue("Missing First Equation.",eq1);
+        assertTrue("Missing Second Equation.",eq2);
     }
 
 
