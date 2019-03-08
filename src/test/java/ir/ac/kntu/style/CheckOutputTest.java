@@ -1,17 +1,16 @@
 package ir.ac.kntu.style;
 
+import ir.ac.kntu.AngryFariborz;
+import org.junit.Test;
+
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import ir.ac.kntu.AngryFariborz;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
 
 /**
  * 120 points
@@ -35,7 +34,7 @@ public class CheckOutputTest {
         input.createNewFile();
         File output = new File("output.txt");
         output.createNewFile();
-        try (InputStream inputStream = new FileInputStream(input); PrintStream printStream = new PrintStream(output);) {
+        try (InputStream inputStream = new FileInputStream(input); PrintStream printStream = new PrintStream(output)) {
 
             try (PrintWriter w = new PrintWriter(input)) {
                 w.println(inputs);
@@ -165,6 +164,22 @@ public class CheckOutputTest {
         assertTrue(doSimulation("9156747","YES",true));
         System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:10 , reason:\"The Number is Magical.\" } | $$$GRADER$$$");
 
+        boolean eq1 = false;
+
+        eq1 = eq1 || doSimulation("9156747", "(((9-1)*567)+47)$4583", true);
+        eq1 = eq1 || doSimulation("9156747", "(((9)-(1))*(567))+(47))$4583", true);
+
+        eq1 = eq1 || doSimulation("9156747", "((9-1)*567)+47$4583", true);
+        eq1 = eq1 || doSimulation("9156747", "(((9)-(1))*(567))+(47)$4583", true);
+
+        eq1 = eq1 || doSimulation("9156747", "(9-1)*567+47$4583", true);
+        eq1 = eq1 || doSimulation("9156747", "((9)-(1))*(567)+(47)$4583", true);
+
+
+        if (eq1) {
+            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:10 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
+        }
+        assertTrue("Missing First Equation.", eq1);
     }
 
 
@@ -187,10 +202,10 @@ public class CheckOutputTest {
         eq2 = eq2 ||doSimulation("20", "((2)-(0))$2" ,true);
 
         if(eq1){
-            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
+            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:10 , reason:\"First Equation is TRUE.\" } | $$$GRADER$$$");
         }
         if(eq2){
-            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:15 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
+            System.err.println("$$$GRADER$$$ | { type:\"SCORE\" , amount:10 , reason:\"Second Equation is TRUE.\" } | $$$GRADER$$$");
         }
         assertTrue("Missing First Equation.",eq1);
         assertTrue("Missing Second Equation.",eq2);
