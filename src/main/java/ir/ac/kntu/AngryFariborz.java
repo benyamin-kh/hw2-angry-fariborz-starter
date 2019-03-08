@@ -8,6 +8,7 @@ public class AngryFariborz {
 
         String input = scanner.nextLine();
 
+
         scanner.close();
     }
 }
