@@ -55,8 +55,18 @@
     <!-- </module> -->
 
     <module name="TreeWalker">
-        
+
         <module name="Indentation"/>
+        <module name="LineLength"/>
+        <module name="MethodLength"/>
+        <module name="ParameterNumber"/>
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock"/>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
+        <module name="ArrayTypeStyle"/>
+        <module name="VisibilityModifier"/>
         
     </module>
 
